@@ -40,9 +40,13 @@ public class TreeProblems {
 
   public static void removeEven(Map<Integer, String> treeMap) {
 
-    // TODO INSERT CODE HERE.
+    Map<Integer, String> tempMap = new TreeMap<>(treeMap);
 
-    return;
+    for (Map.Entry<Integer, String> entry : tempMap.entrySet()) {
+      if (entry.getKey() % 2 == 0) {
+          treeMap.remove(entry.getKey());
+      }
+    }
   }
 
 
