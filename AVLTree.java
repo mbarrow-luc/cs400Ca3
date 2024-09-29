@@ -301,7 +301,7 @@ class LUC_AVLTree {
      *
      *  This includes the following scenarios of where the node to delete is 
      *  in the tree:
-     *    1. leaf node - simpliest case, just return null (which removes node)
+     *    1. leaf node - simplest case, just return null (which removes node)
      *    2. interior node with only left subtree below it (node gets replaced 
      *       with left subtree)
      *    3. interior node with only right subtree below it (node gets replaced
@@ -361,6 +361,15 @@ class LUC_AVLTree {
          * code for each. You can also look at the method InsertElement, as it has do
          * do many of the same things as this method.
          */
+        if (node == null) { return null; }
+
+        if (value < node.value) { node.leftChild = deleteElement(value, node.leftChild);
+        } else if (value > node.value) { node.rightChild = deleteElement(value, node.rightChild);
+        } else {
+            if (node.leftChild == null && node.rightChild == null) {
+                return null;
+            }
+        }
 
         return node;
     }
