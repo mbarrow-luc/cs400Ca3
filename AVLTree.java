@@ -177,8 +177,8 @@ class LUC_AVLTree {
     /**
      *  Method preorderTraversal
      *
-     *  prorderTraversal() is a private method that uses recursion. It prints the
-     *  [sub]tree using an preorder traversal method. For each node printed, it
+     *  preorderTraversal() is a private method that uses recursion. It prints the
+     *  [sub]tree using a preorder traversal method. For each node printed, it
      *  prints the pair "[X, Y]" where X represents the value of the node, and Y
      *  represents the node's height in the tree. Think of the node's height as the
      *  number of edges to the deepest leaf of that node.
@@ -370,10 +370,14 @@ class LUC_AVLTree {
             // if leaf node, simply delete
             if (node.leftChild == null && node.rightChild == null) {
                 return null;
-            // if root node, overwrite with inorder successor, then delete the old successor node
+            // if interior node with only 1 child, overwrite with child
+            } else if (node.leftChild == null) {
+                node = node.rightChild;
+            } else if (node.rightChild == null) {
+                node = node.leftChild;
+            // otherwise, overwrite with inorder successor, then delete the successor leaf node
             } else {
-                Node tempNode = minValueNode(node.rightChild);
-                node.value = tempNode.value;
+                node.value = minValueNode(node.rightChild).value;
                 deleteElement(node.value, node.rightChild);
             }
         }
