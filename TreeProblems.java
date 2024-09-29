@@ -21,13 +21,14 @@ public class TreeProblems {
   
   public static Set<Integer> different(Set<Integer> setA, Set<Integer> setB) {
 
-    // TODO INSERT CODE HERE - DO NOT FORGET TO PLACE YOUR NAME ABOVE
-    //
-    // This can be done numerous ways, but once such will only that
-    // *several* lines of code. Hint: create two temporary TreeSets and utilize the
-    // methods retainAll(), addAll(), and removeAll(). But in the end, get something to work.
+    Set<Integer> tempSet = new TreeSet<>(setA);
 
-    return setA;
+    tempSet.retainAll(setB);
+    setA.removeAll(setB);
+    setB.removeAll(tempSet);
+    setB.addAll(setA);
+
+    return setB;
   }
 
 
@@ -67,7 +68,6 @@ public class TreeProblems {
         String value2 = tree2.get(entry.getKey());
         if ( ! value1.equals(value2)) {
           return false;
-
         }
       }
     }
