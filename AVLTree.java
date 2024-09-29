@@ -1,6 +1,6 @@
 
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Michael Barrow / COMP 400C 001 ***
  *
  * This java file is a Java object implementing simple AVL Tree.
  * You are to complete the deleteElement method.
@@ -344,7 +344,7 @@ class LUC_AVLTree {
     private Node deleteElement(int value, Node node) {
 
         /*
-         * ADD CODE HERE
+         * TODO ADD CODE HERE
          * 
          * NOTE, that you should use the existing coded private methods
          * in this file, which include:
