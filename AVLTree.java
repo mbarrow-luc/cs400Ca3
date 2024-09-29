@@ -363,11 +363,18 @@ class LUC_AVLTree {
          */
         if (node == null) { return null; }
 
+        // traverse tree recursively
         if (value < node.value) { node.leftChild = deleteElement(value, node.leftChild);
         } else if (value > node.value) { node.rightChild = deleteElement(value, node.rightChild);
         } else {
+            // if leaf node, simply delete
             if (node.leftChild == null && node.rightChild == null) {
                 return null;
+            // if root node, overwrite with inorder successor, then delete the old successor node
+            } else {
+                Node tempNode = minValueNode(node.rightChild);
+                node.value = tempNode.value;
+                deleteElement(node.value, node.rightChild);
             }
         }
 
